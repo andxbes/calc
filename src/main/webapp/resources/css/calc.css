@@ -1,0 +1,72 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16.08.2014, 13:27:05
+    Author     : Andr
+*/
+body{
+    background: black;
+   
+}
+button{
+    font-size: 30px;
+    width:  75px;
+    
+    alignment-baseline:  central;
+    height: 75px;
+}
+
+div{
+    margin: auto;
+}
+#result{
+    font-size: 45px;
+    font: bolder cubic-bezier;
+    width: 200px;
+    transition: width 2s;
+     background: orange;
+}
+#result:hover{
+    width: 98%;
+}
+#calc{
+    text-align: center;
+    width: 400px;
+   
+   
+   
+    
+}
+#divResult{
+    background: green;
+}
+
+
+#controlPanel{
+    height: 310px;;
+    margin:0;
+    background: blue;
+    padding: 5px;
+     
+}
+
+
+#numberButton{
+    width: 60%;
+    float: left;
+  
+ 
+   
+}
+#operation{
+   width: 40%;
+   float:left;
+   
+}
+
+#numberButton button{
+    float: right
+}
