@@ -12,20 +12,20 @@ body{
    
 }
 button{
-    font-size: 30px;
+    font-size: 35px;
     width:  75px;
-    
     alignment-baseline:  central;
     height: 75px;
 }
 
 div{
-    margin: auto;
+    margin:0 auto;
 }
+
 #result{
     font-size: 45px;
     font: bolder cubic-bezier;
-    width: 200px;
+    width: 250px;
     transition: width 2s;
      background: orange;
 }
@@ -34,37 +34,30 @@ div{
 }
 #calc{
     text-align: center;
-    width: 400px;
-   
-   
-   
-    
+    width: 400px; 
 }
 #divResult{
     background: green;
+    border: 2px outset greenyellow;
 }
 
 
 #controlPanel{
-    height: 310px;;
-    margin:0;
+    height: 300px;;
     background: blue;
     padding: 5px;
-     
+    border: 4px ridge green ;
 }
-
 
 #numberButton{
-    width: 60%;
+    width: 59%;
     float: left;
-  
- 
-   
+    border-right: 3px tomato ridge;
 }
+
 #operation{
    width: 40%;
-   float:left;
-   
+   float:left; 
 }
 
 #numberButton button{

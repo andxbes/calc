@@ -12,7 +12,7 @@ function jqueryImport() {
 
 
 var data = {
-    oneFieldReady: false, 
+    oneFieldReady: false,
     oneNumber: "",
     twoNumber: "",
     operation: ""
@@ -21,90 +21,87 @@ var data = {
 
 //========================== class Calculator =================================
 function Calc() {
-    
-    
-//метод 
+
+
     this.showThisInputFromTheControlPanel = function(i) {
-       var regxSymbol=/[%|/|*|+|-|=|sqrt]/;
-       var temp = $('#result').attr('value');
-       
-       if(temp == null || i.match(regxSymbol) != null || data.oneNumber==''){
-           temp='';
-       }
-       
-       $('#result').attr('value',temp + i);
+        var regxSymbol = /[%|/|*|+|-|=|sqrt]/;
+        var temp = $('#result').attr('value');
+
+        if (temp == null 
+                || i.match(regxSymbol) != null
+                || data.oneNumber == '') {
+            temp = '';
+        }
+
+        $('#result').attr('value', temp + i);
 
     };
-    this.clearData = function (){
-        data.oneFieldReady=false;
-        data.oneNumber='';
-        data.twoNumber='';
-        data.operation='';
-       
+    this.clearData = function() {
+        data.oneFieldReady = false;
+        data.oneNumber = '';
+        data.twoNumber = '';
+        data.operation = '';
+
     };
 
 //method of sending request 
     this.post = function() {
-        
+
         var result = JSON.stringify(data);
         console.log(result);
-        
+
         $.ajax({
-            type:'POST',
-            url:'/calculate/json',
+            type: 'POST',
+            url: '/calculate/json',
             dataType: 'html',
             headers: {'Content-Type': 'application/json'},
-            data : result,
-            error: function (jqXHR,textStatus,errorThrown){
+            data: result,
+            error: function(jqXHR, textStatus, errorThrown) {
                 alert("error : " + textStatus);
             },
-            success: function (data,textStatus,jqXHR){
-                console.log("return  = "+ data );
-                 $('#result').attr('value',data);
+            success: function(data, textStatus, jqXHR) {
+                console.log("return  = " + data);
+                $('#result').attr('value', data);
             }
-            
         });
-       
-        
-
     };
 
 
 //handle button presses to fill data
     this.processClickOnButton = function(i) {
-         this.showThisInputFromTheControlPanel(i);
-         //if the sign or point
-        if((data.oneNumber === "" && (i==="+" || i==="-"))
-                ||(data.oneNumber!=='' && i==='.' && !data.oneFieldReady )){
-            console.log('simbol < '+ i +' >added to the first number ');
-            data.oneNumber+=i;
+        this.showThisInputFromTheControlPanel(i);
+        //if the sign or point
+        if ((data.oneNumber === "" && (i === "+" || i === "-"))
+                || (data.oneNumber !== '' && i === '.' && !data.oneFieldReady)) {
+            console.log('simbol < ' + i + ' >added to the first number ');
+            data.oneNumber += i;
             return;
-        }else if ((data.operation !== "" && (data.twoNumber === "" && (i==="+" || i==="-")))
-                ||(data.twoNumber!=='' && i==='.' )){
-            console.log('simbol < '+ i +' >added to the second number ');
-            data.twoNumber+=i;
+        } else if ((data.operation !== "" && (data.twoNumber === "" && (i === "+" || i === "-")))
+                || (data.twoNumber !== '' && i === '.')) {
+            console.log('simbol < ' + i + ' >added to the second number ');
+            data.twoNumber += i;
             return;
         }
-    
+
         //if  number
-        if (   !isNaN (parseInt(i, 10))) {
+        if (!isNaN(parseInt(i, 10))) {
             if (!data.oneFieldReady) {
-                data.oneNumber += i;    
+                data.oneNumber += i;
                 return;
             } else {
                 data.twoNumber += i;
                 return;
             }
-        //if operator  
-        } else if(i!=='.'){
-            if ( (i === "=") ) {
+            //if operator  
+        } else if (i !== '.') {
+            if ((i === "=")) {
                 this.post();
                 this.clearData();
-                return ;
+                return;
             }
-          
-            data.operation=i;
-            data.oneFieldReady=true;
+
+            data.operation = i;
+            data.oneFieldReady = true;
         }
     };
 
@@ -122,7 +119,7 @@ function Calc() {
 
         // bootons with numbers
         $('#controlPanel').append('<div id="numberButton"></div>');
-        for (var i = 9 ; i >= 0; i--) {
+        for (var i = 9; i >= 0; i--) {
             $('<button/>', {
                 'id': 'bn' + i,
                 'onclick': 'calc.processClickOnButton(' + '"' + i + '"' + ')',
