@@ -77,9 +77,9 @@ public class Data {
 
     @Override
     public String toString() {
-	return    "\noneNumber = " + oneNumber 
-		+ ",\ntwoNumber = "+ twoNumber 
-		+ ",\noperation =" + operation;
+	return    "{\noneNumber : " + oneNumber 
+		+ ",\ntwoNumber : "+ twoNumber 
+		+ ",\noperation : " + operation+"\n}";
     }
 
     

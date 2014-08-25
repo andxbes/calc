@@ -57,7 +57,7 @@ function Calc() {
             headers: {'Content-Type': 'application/json'},
             data: result,
             error: function(jqXHR, textStatus, errorThrown) {
-                alert("error : " + textStatus);
+                console.error("error : " + textStatus);
             },
             success: function(data, textStatus, jqXHR) {
                 console.log("return  = " + data);
@@ -73,12 +73,12 @@ function Calc() {
         //if the sign or point
         if ((data.oneNumber === "" && (i === "+" || i === "-"))
                 || (data.oneNumber !== '' && i === '.' && !data.oneFieldReady)) {
-            console.log('simbol < ' + i + ' >added to the first number ');
+            
             data.oneNumber += i;
             return;
         } else if ((data.operation !== "" && (data.twoNumber === "" && (i === "+" || i === "-")))
                 || (data.twoNumber !== '' && i === '.')) {
-            console.log('simbol < ' + i + ' >added to the second number ');
+            
             data.twoNumber += i;
             return;
         }

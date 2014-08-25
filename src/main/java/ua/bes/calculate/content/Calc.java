@@ -16,66 +16,63 @@ import org.springframework.stereotype.Component;
 
 public class Calc {
 
-    private static Logger log = Logger.getLogger(Calc.class.getName());
+    private static final Logger log = Logger.getLogger(Calc.class.getName());
 
     private double result;
 
     public String setPar(Data data) {
 	result = 0;
-	log.info("set = " + data);
+	
 
-	switch (data.getOperation()) {
-	    case "%":
-		return Double.toString(
-			percent(data.getOneNumber(), data.getTwoNumber())
-		);
-	    case "/":
-		return Double.toString(
-			divide(data.getOneNumber(), data.getTwoNumber())
-		);
-	    case "+":
-		return Double.toString(
-			add(data.getOneNumber(), data.getTwoNumber())
-		);
-	    case "-":
-		return Double.toString(
-			subtract(data.getOneNumber(), data.getTwoNumber())
-		);
-	    case "sqrt":
-		return Double.toString(
-			radical(data.getOneNumber(), data.getTwoNumber())
-		);
-	    case "*":
-		return Double.toString(
-			multiply(data.getOneNumber(), data.getTwoNumber())
-		);
-
+	if (data.getOneNumber() != 0.0 & data.getOperation() != null) {
+	    switch (data.getOperation()) {
+		case "%":
+		    result = percent(data.getOneNumber(), data.getTwoNumber());
+		    break;
+		case "/":
+		    result = divide(data.getOneNumber(), data.getTwoNumber());
+		    break;
+		case "+":
+		    result = add(data.getOneNumber(), data.getTwoNumber());
+		    break;
+		case "-":
+		    result = subtract(data.getOneNumber(), data.getTwoNumber());
+		    break;
+		case "sqrt":
+		    result = radical(data.getOneNumber(), data.getTwoNumber());
+		    break;
+		case "*":
+		    result = multiply(data.getOneNumber(), data.getTwoNumber());
+		    break;
+		default:
+		    result = data.getOneNumber();
+		    break;
+	    }
+	    log.info("\n set :" + data
+		    + "\n result = "+ result);
+	    return Double.toString(result);
 	}
-
+	log.info("\n set :" + data
+		    + "\n result = OOPS");
 	return "Oops!!!";
     }
 
-    
     private double divide(double a, double b) {
 	return a / b;
     }
 
-   
     private double multiply(double a, double b) {
 	return a * b;
     }
 
-    
     private double add(double a, double b) {
 	return a + b;
     }
 
-   
     private double subtract(double a, double b) {
 	return a - b;
     }
 
-   
     private double percent(double a, double b) {
 	return a * (b / 100);
     }
@@ -85,7 +82,7 @@ public class Calc {
 	if (b == 0) {
 	    return Math.sqrt(a);
 	} else {
-	    return Math.pow(a, 1 / b);   
+	    return Math.pow(a, 1 / b);
 	}
     }
 
