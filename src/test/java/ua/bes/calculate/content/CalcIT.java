@@ -39,7 +39,7 @@ public class CalcIT {
 
     @Test
     public void testSetPar() {
-	System.out.println("operation test ");
+	System.out.println(" the operation test ");
 	double a = 4, b = 2;
 
 	when(testDataMock.getOneNumber()).thenReturn(a);
