@@ -22,9 +22,11 @@ public class Calc {
 
     public String setPar(Data data) {
 	result = 0;
-	
 
-	if (data.getOneNumber() != 0.0 & data.getOperation() != null) {
+	if (data != null && 
+		data.getOneNumber() != 0.0 
+		& !data.getOperation().equals("") 
+		& data.getTwoNumber() != 0.0  ) {
 	    switch (data.getOperation()) {
 		case "%":
 		    result = percent(data.getOneNumber(), data.getTwoNumber());
@@ -49,12 +51,12 @@ public class Calc {
 		    break;
 	    }
 	    log.info("\n set :" + data
-		    + "\n result = "+ result);
+		    + "\n result = " + result);
 	    return Double.toString(result);
 	}
-	log.info("\n set :" + data
-		    + "\n result = OOPS");
-	return "Oops!!!";
+	log.info("\n set :" + (data == null ? "null" : data)
+		+ "\n result = Fail");
+	return "Fail";
     }
 
     private double divide(double a, double b) {
