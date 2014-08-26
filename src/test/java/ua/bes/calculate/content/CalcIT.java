@@ -5,11 +5,8 @@
  */
 package ua.bes.calculate.content;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import static org.junit.Assert.*;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.mockito.Mockito.*;
 
@@ -22,27 +19,12 @@ public class CalcIT {
     private Data testDataMock = null;
     Calc instance;
 
-    public CalcIT() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
     @Before
     public void setUp() {
 	instance = new Calc();
 	testDataMock = mock(Data.class);
     }
-
-    @After
-    public void tearDown() {
-    }
-
+    
     /**
      * Test of setPar method, of class Calc.
      */
