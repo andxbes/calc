@@ -26,7 +26,7 @@ public class Calc {
 	if (data != null && 
 		data.getOneNumber() != 0.0 
 		& !data.getOperation().equals("") 
-		& data.getTwoNumber() != 0.0  ) {
+		& (data.getTwoNumber() != 0.0 | data.getOperation().equals("sqrt")) ) {
 	    switch (data.getOperation()) {
 		case "%":
 		    result = percent(data.getOneNumber(), data.getTwoNumber());
