@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ua.bes.calculate.content.Calc;
 import ua.bes.calculate.content.Data;
 
-@RequestMapping("/calculate")
+@RequestMapping("/calc")
 @Controller
 public class CalcController {
 
