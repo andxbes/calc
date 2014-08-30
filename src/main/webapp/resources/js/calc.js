@@ -10,6 +10,19 @@ function jqueryImport() {
     };
 }
 
+function getPath(){
+    var path="";
+    var host = ""+location.href;
+    var spl = host.split('/');
+    if(spl.length < 1)return "/";
+    var del = spl[spl.length-1];
+    console.info(host);
+    console.info(del);
+    var newHost = host.replace([del],'');
+    console.info(newHost);
+    return newHost;
+};
+
 
 var data = {
     oneFieldReady: false,
@@ -52,7 +65,7 @@ function Calc() {
 
         $.ajax({
             type: 'POST',
-            url: '/calculate/json',
+            url:  '/calculate/calc/json',//TODO 
             dataType: 'html',
             headers: {'Content-Type': 'application/json'},
             data: result,
@@ -148,6 +161,8 @@ jqueryImport();
 
 var calc = new Calc();
 
+
 window.onload = function() {
     calc.generationCalc();
+   
 };

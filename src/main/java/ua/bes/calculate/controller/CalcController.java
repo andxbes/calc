@@ -22,7 +22,7 @@ public class CalcController {
 
     @RequestMapping(value = "/html")
     public void calcHTML(HttpServletResponse response) throws IOException {
-	response.sendRedirect("/resources/static/calcHTML.html");
+	response.sendRedirect("/calculate/resources/static/calcHTML.html");
     }
 
     @RequestMapping(value = "/json", method = RequestMethod.POST)
@@ -30,4 +30,6 @@ public class CalcController {
 	
 	return calc.setPar(data);
     }
+    
+   
 }

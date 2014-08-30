@@ -12,7 +12,7 @@
         <title>make a selection</title>
     </head>
     <body>
-        <a><%= request.getContextPath() %></a>
+       
         <div style=" text-align: center; padding:100px; font-size: 55px;" >
             <a href="<%= request.getContextPath() %>/calc/jsp">JSP</a>
             <b>|</b>
