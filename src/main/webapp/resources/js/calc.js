@@ -1,5 +1,4 @@
 
-
 function jqueryImport() {
     var script = document.createElement('script');
     script.src = 'http://code.jquery.com/jquery-2.1.1.js';
@@ -9,20 +8,6 @@ function jqueryImport() {
         console.log("jquery is connected");
     };
 }
-
-function getPath(){
-    var path="";
-    var host = ""+location.href;
-    var spl = host.split('/');
-    if(spl.length < 1)return "/";
-    var del = spl[spl.length-1];
-    console.info(host);
-    console.info(del);
-    var newHost = host.replace([del],'');
-    console.info(newHost);
-    return newHost;
-};
-
 
 var data = {
     oneFieldReady: false,
@@ -163,6 +148,5 @@ var calc = new Calc();
 
 
 window.onload = function() {
-    calc.generationCalc();
-   
+    calc.generationCalc();  
 };
